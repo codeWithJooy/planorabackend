@@ -59,7 +59,7 @@ exports.loginOrg = async (req, res) => {
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
-    res.json({ message: "Login successful", accessToken, org });
+    res.json({ code:200,message: "Login successful", accessToken,refreshToken, org });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
