@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const orgDetailsSchema = new mongoose.Schema(
   {
     orgId: {
-      type: mongoose.Types.ObjectId,
+      type: String,
       required: true,
       trim: true,
     },

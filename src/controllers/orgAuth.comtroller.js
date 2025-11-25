@@ -33,11 +33,13 @@ exports.registerOrg = async (req, res) => {
       orgPassword: hashedPassword,
       type,
     });
+    const orgResponse = newOrg.toObject();
+    delete orgResponse.orgPassword; // remove hashed password
 
     res.status(201).json({
       code: 200,
       message: "Organization registered successfully",
-      org: newOrg,
+      org: orgResponse,
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -116,21 +118,21 @@ exports.createOrgDetails = async (req, res) => {
     } = req.body;
     const existingOrg = await OrgDetails.findOne({ orgId });
     if (existingOrg)
-      return req.status(400).json({ message: "Org Details Already Present" });
-    const newOrgDetails=await OrgDetails.create({
+      return res.status(400).json({ message: "Org Details Already Present" });
+    const newOrgDetails = await OrgDetails.create({
       orgId,
       officialAddress,
       description,
       insta,
       weblink,
       teamStrength,
-      externalVendor
-    })
-    res.status.json({
-      code:200,
-      message:"Organisational Details Added",
-      orgdetails:newOrgDetails
-    })
+      externalVendor,
+    });
+    res.status(200).json({
+      code: 200,
+      message: "Organisational Details Added",
+      orgdetails: newOrgDetails,
+    });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

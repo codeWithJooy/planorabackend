@@ -1,7 +1,15 @@
 const mongoose = require("mongoose");
 
+const { v4: uuidv4 } = require("uuid");
+
+
 const orgSchema = new mongoose.Schema(
   {
+    orgId: {
+      type: String,
+      unique: true,
+      default: () => uuidv4(),
+    },
     orgName: {
       type: String,
       required: true,
@@ -29,10 +37,10 @@ const orgSchema = new mongoose.Schema(
       enum: ["company", "startup", "enterprise", "other"],
       default: "company",
     },
-    status:{
-      type:String,
-      enum:["new","onboarded"],
-      default:"new"
+    status: {
+      type: String,
+      enum: ["new", "onboarded"],
+      default: "new",
     },
     lastLogin: {
       type: Date,

@@ -4,6 +4,7 @@ const {
   loginOrg,
   refreshToken,
   logoutOrg,
+  createOrgDetails
 } = require("../controllers/orgAuth.comtroller");
 
 const { verifyToken } = require("../middlewares/authMiddleware");
@@ -14,6 +15,7 @@ router.post("/register", registerOrg);
 router.post("/login", loginOrg);
 router.get("/refresh", refreshToken);
 router.post("/logout", logoutOrg);
+router.post("/orgdetails",createOrgDetails)
 
 // example protected route
 router.get("/profile", verifyToken, (req, res) => {
