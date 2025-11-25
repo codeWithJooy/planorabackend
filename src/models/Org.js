@@ -29,6 +29,11 @@ const orgSchema = new mongoose.Schema(
       enum: ["company", "startup", "enterprise", "other"],
       default: "company",
     },
+    status:{
+      type:String,
+      enum:["new","onboarded"],
+      default:"new"
+    },
     lastLogin: {
       type: Date,
       default: null, // will be updated on login
