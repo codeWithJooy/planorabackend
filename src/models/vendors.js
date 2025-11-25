@@ -2,9 +2,13 @@ const mongoose = require("mongoose");
 
 const { v4: uuidv4 } = require("uuid");
 
-
 const vendorSchema = new mongoose.Schema(
   {
+    orgId: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     vendorId: {
       type: String,
       unique: true,
@@ -22,11 +26,11 @@ const vendorSchema = new mongoose.Schema(
       trim: true,
     },
     vendorAlternative: {
-        type: String,
-        required: true,
-        unique: true,
-        trim: true,
-      },
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+    },
     vendorEmail: {
       type: String,
       required: true,

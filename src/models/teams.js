@@ -2,9 +2,13 @@ const mongoose = require("mongoose");
 
 const { v4: uuidv4 } = require("uuid");
 
-
 const memberSchema = new mongoose.Schema(
   {
+    orgId: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     memberId: {
       type: String,
       unique: true,
@@ -22,11 +26,11 @@ const memberSchema = new mongoose.Schema(
       trim: true,
     },
     memberAlternative: {
-        type: String,
-        required: true,
-        unique: true,
-        trim: true,
-      },
+      type: String,
+      required: true,
+      unique: true,
+      trim: true,
+    },
     memberEmail: {
       type: String,
       required: true,

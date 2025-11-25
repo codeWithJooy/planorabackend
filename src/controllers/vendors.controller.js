@@ -2,7 +2,7 @@ const Vendors = require("../models/vendors");
 
 exports.registerVendor = async (req, res) => {
   try {
-    const { vendorName, vendorPhone, vendorAlternative, vendorEmail } = req.body;
+    const { vendorName, vendorPhone, vendorAlternative, vendorEmail,orgId } = req.body;
 
     const existingVendor = await Vendors.findOne({ vendorEmail });
     if (existingVendor) {
@@ -17,6 +17,7 @@ exports.registerVendor = async (req, res) => {
       vendorPhone,
       vendorAlternative,
       vendorEmail,
+      orgId
     });
 
     return res.status(201).json({
