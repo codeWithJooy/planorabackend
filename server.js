@@ -7,8 +7,9 @@ const cors = require("cors");
 
 const orgAuthRoutes = require("./src/routes/authRoutes");
 const vendorRoutes=require("./src/routes/vendorRoutes");
-const memberRoutes=require("./src/routes/memberRoutes")
-const eventRoutes=require("./src/routes/eventRoutes")
+const memberRoutes=require("./src/routes/memberRoutes");
+const eventRoutes=require("./src/routes/eventRoutes");
+const subEventsRoutes=require("./src/routes/subEventsRoutes")
 
 const app = express();
 app.use(
@@ -24,6 +25,7 @@ app.use("/api/org", orgAuthRoutes);
 app.use("/api/vendors",vendorRoutes);
 app.use("/api/members",memberRoutes);
 app.use("/api/events",eventRoutes);
+app.use("/api/subevents",subEventsRoutes)
 
 mongoose
   .connect(process.env.MONGO_URI)
