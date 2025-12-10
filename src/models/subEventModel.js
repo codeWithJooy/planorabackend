@@ -49,6 +49,11 @@ const subEventSchema = new mongoose.Schema(
       required: true,
     },
 
+    subEventStartTime: {
+      type: String,
+      required: true,
+    },
+
     subEventDescription: {
       type: String,
       required: true,

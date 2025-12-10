@@ -108,6 +108,7 @@ exports.getSingleEvent = async (req, res) => {
     }
 
     res.status(200).json({
+      code:200,
       message: "Event fetched successfully",
       event,
     });

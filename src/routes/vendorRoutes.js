@@ -2,12 +2,12 @@ const express = require("express");
 
 const {
   registerVendor,
-  getVendors,
+  getVendorsByOrgId
 } = require("../controllers/vendors.controller");
 
 const router = express.Router();
 
 router.post("/register", registerVendor);
-router.get("/getvendors", getVendors);
+router.get("/:orgId", getVendorsByOrgId);
 
 module.exports = router;

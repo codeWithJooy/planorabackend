@@ -31,6 +31,11 @@ const memberSchema = new mongoose.Schema(
       unique: true,
       trim: true,
     },
+    memberDesignation:{
+      type:String,
+      required:true,
+      trim:true,
+    },
     memberEmail: {
       type: String,
       required: true,
@@ -48,4 +53,4 @@ const memberSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Menbers", memberSchema);
+module.exports = mongoose.model("Members", memberSchema);

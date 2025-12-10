@@ -38,6 +38,11 @@ const vendorSchema = new mongoose.Schema(
       lowercase: true,
       trim: true,
     },
+    vendorCategory: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     lastLogin: {
       type: Date,
       default: null, // will be updated on login

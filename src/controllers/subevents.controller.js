@@ -14,6 +14,7 @@ exports.registerSubEvent = async (req, res) => {
       subEventStartDate,
       subEventStartTime,
       subEventEndDate,
+      subEventEndTime,
       subEventDescription,
       subEventMembers,
       subEventVendors,
@@ -29,6 +30,7 @@ exports.registerSubEvent = async (req, res) => {
       !subEventStartDate ||
       !subEventStartTime ||
       !subEventEndDate ||
+      !subEventEndTime ||
       !subEventDescription
     ) {
       return res.status(400).json({
@@ -45,6 +47,7 @@ exports.registerSubEvent = async (req, res) => {
       subEventStartDate,
       subEventStartTime,
       subEventEndDate,
+      subEventEndTime,
       subEventDescription,
       subEventMembers: subEventMembers || [],
       subEventVendors: subEventVendors || [],

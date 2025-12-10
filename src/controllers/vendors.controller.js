@@ -2,7 +2,7 @@ const Vendors = require("../models/vendors");
 
 exports.registerVendor = async (req, res) => {
   try {
-    const { vendorName, vendorPhone, vendorAlternative, vendorEmail,orgId } = req.body;
+    const { vendorName, vendorPhone, vendorAlternative, vendorEmail,orgId,vendorCategory } = req.body;
 
     const existingVendor = await Vendors.findOne({ vendorEmail });
     if (existingVendor) {
@@ -17,7 +17,8 @@ exports.registerVendor = async (req, res) => {
       vendorPhone,
       vendorAlternative,
       vendorEmail,
-      orgId
+      orgId,
+      vendorCategory
     });
 
     return res.status(201).json({
@@ -31,15 +32,18 @@ exports.registerVendor = async (req, res) => {
   }
 };
 
-exports.getVendors = async (req, res) => {
+exports.getVendorsByOrgId = async (req, res) => {
   try {
-    const vendors = await Vendors.find();
+    const { orgId } = req.params;
+
+    const vendors= await Vendors.find({ orgId: orgId.toString() });
+
     return res.status(200).json({
       code: 200,
-      message: "Vendors List Fetched",
+      message: "Vendors fetched successfully",
       vendors,
     });
-  } catch (error) {
-    return res.status(500).json({ code: 500, message: error.message });
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
   }
 };
